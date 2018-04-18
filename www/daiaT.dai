@@ -1,0 +1,23 @@
+﻿-- format
+-- [text to recognize] | [text to display or execute] | [is text a command?]
+-- simple text --
+Reativar Cadastro|Foram detectadas 11 redes sem registro de vendas nos últimos 6 meses, o que totaliza 372 lojas sem vendas do produto A, isso pode representar um problema de cadastro.|false
+Sem Cadastro|Foram detectadas 6 redes sem registro no histórico de demanda, o que totaliza 63 lojas sem vendas do produto A, isso pode representar um problema de cadastro.|false
+Substituição|Comparando a prescrição com a demanda do Produto A e do concorrente, os dados sugerem estar ocorrendo troca entre os produtos.|false
+Horizontalização|Foi identificado entre os clientes atendidos pelos distribuidores analisados, que dentro dos últimos seis meses (Comparativo dos últimos 3 meses contra os 3 primeiros meses), uma inclusão de 257 clientes novos e a perda de 215 clientes no período (passando de 799 clientes para 843 clientes). O percentual de acréscimo entre o primeiro período e o segundo foi de 6%.  Apesar do aumento de novos clientes no total, o distribuidor X perdeu 12 clientes.|false
+Ruptura Real|Queda de demanda fora do padrão que sugere falta de produto em aproximadamente 2343 clientes, ocasionando uma perda de vendas de 6279 unidades no mês atual.|false
+Ruptura Provável|Projetando o giro do produto com os dados da ultima venda, existe a possibilidade de ruptura em 5.239 clientes nos próximos 3 dias.|false
+Largura e profundidade|Há ocorrências de problemas em relação à largura, profundidade e prescrição, qual deseja ouvir primeiro?|false
+Largura|Foi identificado que uma diminuição de médicos prescritores do Produto A enquanto os concorrentes se mantiveram estável.|false
+Profundidade|Identificamos que no último mês de análise, apesar de ter ocorrido um aumento de 4% sobre as prescrições do Produto A em relação ao período anterior, a participação em relação aos concorrentes selecionados, teve uma queda de 8%.|false
+Prescrição|Foram identificadas quedas no share de prescrições do Produto A em 91 micro regiões em relação ao mês passado, em sua maioria da especialidade Z. Neste mesmo período, houve um acréscimo de 29 médicos receitando o produto A e um decréscimo de 111 prescrições do produto.|false
+Força de Vendas|3 setores não atingiram as metas de demanda. Em 1 setor a demanda não atingida ocorreu em Bricks onde a rede H está presente. Em 2 setores, ocorreu queda de prescrição de 8 médicos.|false
+Grupo Território|2 setores não atingiram a meta de demanda. Motivos: (Abrir opções das telas anteriores)|false
+Grupo Cidade|46 cidades não atingiram as metas de demanda. 22 são cidades visitadas, 12 atendidas por distribuidores e 12 não visitas / não atendidas.|false
+Grupo Cliente|5 redes e 1 rede associativista tiveram uma demanda fora do padrão. Motivos: (Abrir opções das telas anteriores)|false
+Grupo Especialidade|Z teve uma queda de receitas / médico. Motivos: (Abrir opções das telas anteriores)|false
+Mercado Crescimento|MAT - Mercado teve um crescimento de 8% em Unidades e 9% em R$ no. O Produto A obteve 4% em Unidades e 3% em R$.Mês - Mercado teve um crescimento de 7,8% em Unidades e 9,1% em R$ no. O Produto A obteve 5% em Unidades e 5,3% em R$.|false
+Mercado Market Share| MAT - O Produto A obteve 2,2% em Unidades e 3,1% em R$. Um ganho de 0,1% em Unidades e 0,2% em R$ Mês - O Produto A obteve 2,1% em Unidades e 3,0% em R$. Um ganho de 0,2% em Unidades|false
+Mercado Estoque|O estoque do Produto A ficou em 45 dias. Atenção ao distribuidor Z que fechou com 54 dias.|false
+Mercado Desconto|O produto A aumentou o desconto de 42% para 45%, em contramão dos que diminuíram o desconto de 43% para 40%.|false
+Mercado Mix|O produto A teve um crescimento de 9% em reais no MAT, dividido em 3% de aumento de preço, 1% em unidades e 5% por Mix de SKUs com preço médio maior.|false
