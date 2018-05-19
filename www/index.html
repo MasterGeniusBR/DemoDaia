@@ -169,8 +169,17 @@ function enterText(e) {
     }
 }
 	
-	function addText()
+	function addText(vindo)
 	{
+		perguntaTexto="aa";
+		if(vindo=="4455AA")
+		{
+			perguntaTexto = $('#pergunta').val();
+		}
+		else
+		{
+			perguntaTexto=vindo;
+		}
 		console.log(this.resps.length);
 		console.log(this.resps);
 		var perguntaTexto = $('#pergunta').val();
