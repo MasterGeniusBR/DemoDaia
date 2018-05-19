@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>Daia Assistente</title>
+        <title>Daia Assistente [DEMO]</title>
     </head>
     <body style="position:relative;margin:0;padding:0;background-color:#f5f5f5;height:100%;font-family:Helvetica;">
         <script type="text/javascript" src="cordova.js"></script>
@@ -11,7 +11,7 @@
 		<div style="background: linear-gradient(#079C81, #13A1D6);top:0;height:40px;">
 		<div style="height:10px;">
 		</div>
-			<p style="text-shadow: 1px 2px 4px #000;height:100%;position:relative;margin-top:0px;text-align:center;color:#fff;">Assistente Daia V3</p>
+			<p style="text-shadow: 1px 2px 4px #000;height:100%;position:relative;margin-top:0px;text-align:center;color:#fff;">Demonstração Assistente Daia</p>
 		</div>
 		<div id="vrau" style="overflow-y:scroll;float:left;position:relative;background-color:#f5f5f5;height:calc(100% - 130px);width:100%">
 			<div style="position:relative;float:left;width:100%;top:10px">
@@ -21,8 +21,9 @@
 			</div>
 		</div>
 		<div style="margin-top:10px;position:relative;top:0;height:80px;float:left;width:100%">
-			<input id="pergunta" style="padding-left:10px;background-color:#fff;border: 1px solid #22C9D1;border-radius: 10px 10px;font-size:22px;position:relative;width:calc(100% - 110px);margin-left:15px;margin-top:15px;float:left"></input>
-			<button onclick='addText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#10003;</button>
+			<input onkeypress="return enterText(event)" id="pergunta" style="padding-left:10px;background-color:#fff;border: 1px solid #22C9D1;border-radius: 10px 10px;font-size:22px;position:relative;width:calc(100% - 170px);margin-left:15px;margin-top:15px;float:left"></input>
+			<button onclick='apagaText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#9003;</button>
+			<button onclick='voiceToText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#10003;</button>
 		</div>
     </body>
 	
@@ -34,7 +35,7 @@
 	<script id="hidden-template" type="text/x-custom-template">
 			<div style="position:relative;float:left;width:100%;top:10px;">
 				<div style="text-align:left;border: 1px solid #12b2ed;border-radius: 10px 10px;float:right;position:relative;top:5px;max-width:calc(50% - 20px);background-color:#96e0f7;margin-right:10px;">
-					<p id="texto" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Assistentgsdfgsdfgsdfgkjasdifh asjdfhailsdfh alksdfhklasdhfklasdhflkasdhfklashdlkfhaskldfhalksdfhlkasdfhklasdhflkasdhfklahsdlkfhasdklfhaklsdfhalksdfhklasdfhlkasdhfklasdfe Daia</p>
+					<p id="texto" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Erro</p>
 				</div>
 			</div>
 			<div style="position:relative;float:left;width:100%;top:10px">
@@ -46,7 +47,11 @@
 	</script>
 	
 <script>
-
+function apagaText()
+{  
+	document.getElementById('pergunta').value = "";
+}
+var ouvindo=false;
 	var intCount=0;
 	var resp = "";
 	var textos;
@@ -57,13 +62,81 @@
 	var resps_1=[];
 	var pergs_1=[];
 	
+	function voiceToText()
+	{
+		if(ouvindo==false)
+		{
+		ouvindo=true;
+		 document.addEventListener("deviceready", function() {
 
+		 
+		 function startRecognition(){
+		window.plugins.speechRecognition.startListening(function(result){
+			// Show results in the console
+			//alert("1"+result);
+			//for(var countForTexto)
+			//
+				
+			//}
+			//alert(result[0]);
+			addText(result[0]);
+			ouvindo=false;
+			//console.log("1"+result);
+			
+		}, function(err){
+			//alert("2"+err);
+			//console.log("2"+err);
+		}, {
+			language: "pt-BR",
+			showPopup: true
+		});
+	}
 
-	
+	// Verify if recognition is available
+	window.plugins.speechRecognition.isRecognitionAvailable(function(available){
+		if(!available){
+			alert("Sistema de Voz indisponivel nesse celular");
+			//console.log("Indisponibru");
+		}
+
+		// Check if has permission to use the microphone
+		window.plugins.speechRecognition.hasPermission(function (isGranted){
+			if(isGranted){
+			//alert("OOOO");
+			//console.log("000000");
+				startRecognition();
+			}else{
+				// Request the permission
+				window.plugins.speechRecognition.requestPermission(function (){
+					// Request accepted, start recognition
+					//alert("OOOO");
+					//console.log("000000");
+					//startRecognition();
+				}, function (err){
+					//alert("3"+err);
+					//console.log("3"+err);
+				});
+			}
+		}, function(err){
+			//alert("4"+err);
+			//console.log("4"+err);
+		});
+	}, function(err){
+		//alert("5"+err);
+		//console.log("5"+err);
+	});
+		 
+		 
+		 
+		 
+		 
+	}, false);
+		}
+	}
 
 
 	$(function() {
-    		fetch('http://18.219.223.202/Demo/getFile.php?tipo=tex1').then(function(response) {
+    		fetch('http://13.59.121.68/Demo/getFile.php?tipo=tex1').then(function(response) {
 		  return response.text();
 		})
 		.then(function(myBlob) {
@@ -88,7 +161,13 @@
 
 	});
 
-
+function enterText(e) {
+    if (e.keyCode == 13) {
+        var tb = document.getElementById("pergunta");
+        addText('4455AA');
+        return false;
+    }
+}
 	
 	function addText()
 	{
@@ -115,20 +194,6 @@
 						this.resps=this.resps_1;
 						achou=1;
 					}
-					else if(perguntaTexto.toLowerCase()=="Produto Banho a Banho".toLowerCase())
-					{
-						produtoAtivo="Banho a Banho";
-						var template = $('#hidden-template').html();
-						$('#vrau').append(template);
-						$('#texto').attr("id","textoPerg"+intCount);
-						$('#textoPerg'+intCount).text(perguntaTexto);
-						$('#textoResp').attr("id","textoResp"+intCount);
-						$('#textoResp'+intCount).text("Você definiu Banho a Banho como produto ativo");
-						intCount=intCount+1;
-						this.pergs=this.pergs_2;
-						this.resps=this.resps_2;
-						achou=1;
-					}
 					else
 					{
 						var template = $('#hidden-template').html();
@@ -137,6 +202,7 @@
 						$('#textoPerg'+intCount).text(this.pergs[i]+" ");
 						$('#textoResp').attr("id","textoResp"+intCount);
 						$('#textoResp'+intCount).text(this.resps[i]);
+						playVibrate(this.resps[i]);
 						intCount=intCount+1;
 						achou=1;
 					}
@@ -150,10 +216,18 @@
 				$('#textoPerg'+intCount).text(perguntaTexto);
 				$('#textoResp').attr("id","textoResp"+intCount);
 				$('#textoResp'+intCount).text("Comando não encontrado");
+				playVibrate("Comando não encontrado!");
 				intCount=intCount+1;
 			}
 
-
+			function playVibrate(textoVozFala)
+			{
+				var u = new SpeechSynthesisUtterance();
+				u.text = textoVozFala;
+				u.lang = 'pt-BR';
+				u.volume=1;
+				speechSynthesis.speak(u);      
+			}
 
 
 
