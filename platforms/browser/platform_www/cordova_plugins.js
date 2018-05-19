@@ -602,6 +602,14 @@ module.exports = [
         "merges": [
             "window.FileSystem"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
+        "id": "cordova-plugin-speechrecognition.SpeechRecognition",
+        "pluginId": "cordova-plugin-speechrecognition",
+        "merges": [
+            "window.plugins.speechRecognition"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -626,7 +634,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-file": "6.0.1"
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-speechrecognition": "1.1.2"
 }
 // BOTTOM OF METADATA
 });
