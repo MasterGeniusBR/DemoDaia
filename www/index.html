@@ -244,5 +244,14 @@ function enterText(e) {
 		objDiv.scrollTop = objDiv.scrollHeight;
 		//$("#vrau").animate({ scrollTop: $("#vrau").height()});
 	}
+		function playIntro(textoVozFala)
+	{
+		var u = new SpeechSynthesisUtterance();
+		u.text = textoVozFala;
+		u.lang = 'pt-BR';
+		u.volume=1;
+		speechSynthesis.speak(u);      
+	}
+	playIntro("Olá, sou sua assistente virtual DAIA, nesta apresentação irei passar informações sobre o setor A.");
 	</script>
 </html>
